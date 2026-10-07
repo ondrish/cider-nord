@@ -2,6 +2,7 @@ name: Nord
 author: ondrish
 description: An arctic, north-bluish theme for Cider using the Nord palette
 version: 1.0.0
+marketplaceID: 107
 repo: https://github.com/ondrish/cider-nord
 stylesheets:
   - file: main.css
