@@ -1,0 +1,440 @@
+/* Nord for Cider 4
+   The Nord palette (https://www.nordtheme.com) for the Cider Apple Music client.
+   Polar Night surfaces, Snow Storm text, Frost accents, Aurora for status colours.
+
+   Credits: selector map in the lineage of Catppuccin for Cider (MIT,
+   https://github.com/catppuccin/cider), with the Cider 4 variable layout first
+   seen in "Omarchy Your Cider" by mattco (marketplace #92). Background and
+   progress-bar handling researched against CiderPunk Dark and Ciderify v2.
+   License: MIT. */
+
+body.body--dark {
+  /* Nord palette: Polar Night 0-3, Snow Storm 4-6, Frost 7-10, Aurora 11-15 */
+  --nord0: #2e3440; --nord1: #3b4252; --nord2: #434c5e; --nord3: #4c566a;
+  --nord4: #d8dee9; --nord5: #e5e9f0; --nord6: #eceff4;
+  --nord7: #8fbcbb; --nord8: #88c0d0; --nord9: #81a1c1; --nord10: #5e81ac;
+  --nord11: #bf616a; --nord12: #d08770; --nord13: #ebcb8b; --nord14: #a3be8c; --nord15: #b48ead;
+  --frost-gradient: linear-gradient(90deg, var(--nord7), var(--nord10));
+
+  /* Cider mixes 10% accent into rgb(5,5,5) for dialogs/backgrounds: that was the green tint */
+  --mats-darkBackgroundBase: #242933;
+  --mats-accentBackground: var(--nord0);
+  --mats-accentBackgroundDark: #2a303b;
+  --mats-accentOutline: color-mix(in srgb, var(--nord9), transparent 60%);
+
+  --accent: #88c0d0;
+  --text: #eceff4;
+  --subtext1: #d8dee9;
+  --subtext0: #8892a4;
+  --overlay1: #616e88;
+  --overlay0: #4c566a;
+  --surface0: #3b4252;
+  --hover: #434c5e;
+  --base: #2e3440;
+  --mantle: #2a303b;
+  --crust: #242933;
+  --selection-bg: color-mix(in srgb, var(--nord8) 18%, var(--nord1));
+  --red: #bf616a;
+  --green: #a3be8c;
+  --yellow: #ebcb8b;
+  --blue: #81a1c1;
+  --magenta: #b48ead;
+  --cyan: #8fbcbb;
+
+  --fontFamily: "Adwaita Sans", "Inter", system-ui, sans-serif;
+  --fontFamilyLyrics: "Adwaita Sans", "Inter", system-ui, sans-serif;
+
+  --glassFilter: none;
+  --glassFilter2: none;
+  --glassFallbackColor: #2a303b;
+  --chrome-button-blur: 0px;
+
+  background: var(--crust);
+  color: var(--text);
+  font-family: var(--fontFamily);
+
+  --textDefault: var(--text);
+  --textPrimary: var(--text);
+  --textSecondary: var(--subtext1);
+  --textOpposite: var(--crust);
+  --systemPrimary: var(--text);
+  --systemSecondary: var(--subtext1);
+  --systemTertiary: var(--surface0);
+  --systemQuinary: var(--selection-bg);
+  --systemQuaternary: var(--selection-bg);
+  --systemBlue: var(--nord10);
+  --systemPink: var(--nord15);
+  --systemRed: var(--red);
+  --systemGreen: var(--green);
+  --systemPurple: var(--magenta);
+  --systemYellow: var(--yellow);
+  --systemCyan: var(--cyan);
+  --systemGray: var(--overlay0);
+
+  --keyColor: var(--accent);
+  --keyColor-rgb: 136, 192, 208;
+  --musicKeyColor: var(--accent);
+  --tracklistAltRowColor: var(--mantle);
+  --vibrantDivider: var(--surface0);
+
+  --q-primary: var(--accent);
+  --q-primary-rgb: 136, 192, 208;
+  --q-accent: var(--nord15);
+  --q-info: var(--nord9);
+  --q-positive: var(--green);
+  --q-negative: var(--red);
+  --q-warning: var(--yellow);
+  --qDark: var(--base);
+  --qDarkPage: var(--base);
+  --qDarkHUD: #2a303b;
+
+  --pageBG: var(--base);
+  --playerBackground: var(--mantle);
+  --playerScrubberFill: var(--accent);
+  --progressColor: var(--accent);
+  --primary: var(--accent);
+  --primary-rgb: 136, 192, 208;
+  --nav-accent: var(--nord10);  /* selected sidebar item fill (.nav-button-content::before); snow text stays readable */
+
+  .bg-green { background-color: var(--green); }
+  .bg-red { background-color: var(--red); }
+  .text-default, .text-white { color: var(--text); }
+  .text-red { color: var(--red); }
+
+  #app,
+  #app-viewport,
+  .app-root {
+    background: var(--base);
+  }
+
+  .win-titlebar {
+    background: var(--crust);
+    color: var(--text);
+    font-family: var(--fontFamily);
+  }
+
+  .window-controls .window-button,
+  .window-controls .window-control {
+    color: var(--subtext1);
+  }
+
+  .q-card,
+  .q-menu,
+  .q-tooltip,
+  .q-dialog,
+  .q-field__control,
+  .search-box,
+  .dropdown-menu,
+  .chrome-top,
+  .player,
+  [role='dialog'] [sfc-name='QCard'] {
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .q-btn:not(.q-btn--round):not(.round) {
+  }
+
+  #app-viewport[data-layout-type="mojave-if"] {
+    .chrome-top {
+      background: var(--base);
+      border-bottom: 1px solid var(--overlay0);
+    }
+
+    [sfc-name='MojavePlayer'] {
+      background: var(--base);
+
+      [sfc-name='AMProgressBar'] .overlay-progress-bar {
+        --progressColor: var(--nord8);
+      }
+
+      .player {
+        background: var(--mantle);
+        border: 2px solid var(--nord10);
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      .volumeBar input.volume-range {
+        --progressColor: var(--accent);
+      }
+    }
+  }
+
+  #app-viewport[data-layout-type="mojave"] {
+    .chrome-top { background: var(--crust); }
+
+    [sfc-name='MojavePlayer'] {
+      [sfc-name='AMProgressBar'] .overlay-progress-bar {
+        --progressColor: var(--nord8);
+      }
+      .player {
+        background: var(--mantle);
+        border: 2px solid var(--nord10);
+        box-shadow: none;
+      }
+      .volumeBar input.volume-range {
+        --progressColor: var(--accent);
+      }
+    }
+  }
+
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--text);
+  }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--crust); }
+  ::-webkit-scrollbar-thumb { background: var(--overlay0); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--overlay1); }
+
+  input, textarea, select, button, .q-item, .nav-text {
+    font-family: var(--fontFamily);
+  }
+
+  input[type=checkbox][switch] { background: var(--overlay0); }
+  input[type=checkbox][switch]:checked { background: var(--accent); }
+  input[type=checkbox][switch]:before { background: var(--crust); }
+
+  .q-tooltip {
+    background-color: var(--mantle);
+    color: var(--text);
+    border: 1px solid var(--overlay0);
+  }
+
+  button.bg-primary { color: var(--crust); }
+
+  [sfc-name='HeaderSearch'] {
+    .search-box {
+      background: var(--mantle);
+      border: 1px solid var(--overlay0);
+    }
+    .dropdown-menu {
+      background-color: var(--base);
+      border: 1px solid var(--overlay0);
+    }
+  }
+
+  [sfc-name='QueueButton'].active,
+  [title='Lyrics'].active,
+  .see-all {
+    color: var(--accent);
+  }
+
+  [sfc-name='Explicit'] svg { fill: var(--nord11); }
+
+  [sfc-name='RouterView'] {
+    background: var(--base);
+    color: var(--text);
+
+    .detail-content {
+      .blurb-text, .meta-data { color: var(--subtext1); }
+      .chip-name { opacity: 1; color: var(--nord7); }
+    }
+
+    [sfc-name='Playlist'] .tracks-container .track-list,
+    [sfc-name='Album'] .tracks-container .track-list {
+      color: var(--text);
+
+      .ri-list-item:hover:not(.selected) {
+        background-color: var(--selection-bg);
+      }
+
+      .ri-list-item.selected,
+      [sfc-name='PlaylistTrack'].selected,
+      [sfc-name='AlbumTrack'].selected {
+        background-color: var(--hover);
+        box-shadow: inset 3px 0 0 var(--nord15);
+      }
+
+      [sfc-name='PlaylistTrack']:not(.selected),
+      [sfc-name='AlbumTrack']:not(.selected) {
+        .artist-link, .artist-section, .album-section, button.menu-btn {
+          color: var(--nord9);
+        }
+      }
+    }
+  }
+
+  [sfc-name='Sidebar'] {
+    background: var(--crust);
+    color: var(--nord4);
+    /* the account button at the bottom used the 30% accent selection over crust
+       (#425763) with overlay1 text: low contrast. Solid Nord surfaces instead. */
+    --selection-bg: var(--nord2);
+    --systemQuinary: var(--nord1);
+    --systemQuaternary: var(--nord1);
+    --textSecondary: var(--nord4);
+    --systemSecondary: var(--nord4);
+    border-right: 1px solid var(--overlay0);
+
+    .nav-icon { color: var(--nord7); }
+    .nav-text { font-family: var(--fontFamily); }
+
+    .sidebar_nav-btn {
+    }
+
+    .sidebar_nav-btn:hover {
+      background: var(--hover);
+    }
+
+    .sidebar_nav-btn:active,
+    .active {
+      background: var(--nord10);
+      .nav-icon, .nav-text { color: var(--nord6); }
+    }
+  }
+
+  [sfc-name='RightDrawerContent'] {
+    background: var(--mantle);
+    border-left: 1px solid var(--overlay0);
+
+    .lyric-view {
+      font-family: var(--fontFamilyLyrics);
+      .lyric-word {
+        --defaultColor: var(--text);
+        --gradientColor: var(--nord13);
+      }
+      .active .lyric-text,
+      .finished .lyric-text { color: var(--nord8); }
+    }
+
+    [sfc-name='AMQueueItem'] {
+      .qmd-title-text { color: var(--text); }
+      .qmd-artist_album { color: var(--subtext1); }
+      .fa-solid { color: var(--nord7); }
+    }
+  }
+
+  .q-menu {
+    background-color: var(--mantle);
+    border: 1px solid var(--overlay0);
+    box-shadow: none;
+
+    .q-hoverable:hover { background-color: var(--selection-bg); }
+
+    [sfc-name='ContextMenuIcon'],
+    [sfc-name='QItem']:hover [sfc-name='QIcon'] {
+      color: var(--accent);
+    }
+
+    [sfc-name='AMVolumeSlider'] .volumeBar .volume-range {
+      --progressColor: var(--accent);
+    }
+  }
+
+  [role='dialog'] [sfc-name='QCard'] {
+    background-color: var(--base);
+    color: var(--text);
+    border: 1px solid var(--overlay0);
+  }
+
+  [sfc-name='MiniPlayerLayout'] {
+    background: var(--mantle);
+    border: 2px solid var(--nord10);
+
+    [sfc-name='MiniPlayerControls'] .overlay-progress-bar {
+      --progressColor: var(--accent);
+    }
+  }
+
+  .immersive-player {
+    [sfc-name='AMPMetadataMojave'] {
+      .song-name { color: var(--text); font-family: var(--fontFamily); }
+      .release-info { color: var(--subtext1); }
+    }
+
+    [sfc-name='AMProgressBar'] .overlay-progress-bar {
+      --progressColor: var(--accent);
+    }
+  }
+
+  .artwork:not(.round),
+  .mediaitem-card .artwork:not(.round),
+  amp-artwork {
+  }
+
+  .cider-dialog-window--generic,
+  .dialog-box,
+  dialog.plugin-base-modal {
+    --backgroundColor: var(--nord0);
+    --backgroundColorFallback: var(--nord0);
+    background: var(--nord0);
+    border: 1px solid var(--nord3);
+  }
+
+  .settings-category-tile {
+    background: var(--nord1);
+    border-color: var(--nord2);
+  }
+  .settings-category-tile:hover {
+    background: var(--nord2);
+    border-color: var(--nord8);
+  }
+  .settings-category-tile .tile-icon-wrap { color: var(--nord8); }
+  .settings-updates-widget {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--nord14) 18%, transparent) 0%, transparent 60%), var(--nord1);
+  }
+
+  [sfc-name='FavoriteButton'], .favorite, .loved { color: var(--nord11); }
+  .rating-star, [sfc-name='StarRating'] { color: var(--nord13); }
+
+  /* ---- Backgrounds ----
+     With window transparency (mica/acrylic) on, any layer Cider leaves transparent
+     shows whatever is behind the window; on platforms without blur that is black.
+     Every layer is painted explicitly so the theme looks the same everywhere. */
+  --q-dark: var(--nord0);
+  --q-dark-page: var(--nord0);
+  --qDark: var(--nord0);
+  --qDarkPage: var(--nord0);
+  --pageBG: var(--nord0);
+  --opaqueShelfBG: var(--nord1);
+  --tracklistAltRowColor: color-mix(in srgb, var(--nord1) 55%, transparent);
+  --tracklistHoverColor: var(--nord2);
+  --vibrantDivider: var(--nord2);
+  --reducedSurfaceColor: var(--nord1);
+
+  #app-viewport { background-color: var(--crust); }
+  .cider-sidebar { background-color: var(--crust); }
+
+  /* the main page panel: Cider hard-codes color-mix(rgb(10,10,10), keyColor 2%) */
+  .new-shell-page-container,
+  .new-shell-page-container[data-corner-cut=true]::before,
+  [sugar-color-scheme=artwork] .new-shell-page-container,
+  [sugar-color-scheme=keyColor] .new-shell-page-container {
+    background: var(--nord0);
+  }
+  .new-shell-page-container[data-corner-cut=true] { background: transparent; }
+
+  /* page header wash: Cider fades the key colour into black */
+  .q-page.q-py-lg.q-px-xl,
+  .q-page.q-pa-lg.q-px-xl {
+    background-image: linear-gradient(rgba(from var(--nord8) r g b / 0.14) 0%, var(--nord0) 9%);
+  }
+
+  /* floating search / command centre */
+  .command-center .content-area,
+  .content-area .results-container { background: var(--nord0); }
+  .content-area .details-container { background: var(--nord1); }
+
+  /* the newer progress bar component (fill was --textDefault white) */
+  .cider-progress-bar .progress-current,
+  .cider-progress-bar .progress-cursor { background-color: var(--nord8); }
+  .cider-progress-bar .progress-bar-content,
+  .cider-progress-bar .progress-background { background-color: var(--nord2); }
+
+  /* Text on accent-filled buttons: dark Polar Night, not Snow Storm.
+     Playlist/album Play + Shuffle are .c-btn with a keyColor .c-btn--surface. */
+  [sfc-name='AlbumPlaybackActions'] .c-btn,
+  [sfc-name='AlbumPlaybackActions'] .c-btn .c-btn--content,
+  .c-btn--primary-text,
+  .plugin-base .c-btn.primary,
+  button.bg-primary,
+  .q-btn.bg-primary,
+  .q-btn.bg-primary [sfc-name='QIcon'] {
+    color: var(--nord0);
+  }
+}

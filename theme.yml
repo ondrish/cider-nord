@@ -1,0 +1,9 @@
+name: Nord
+author: ondrish
+description: An arctic, north-bluish theme for Cider using the Nord palette
+version: 1.0.0
+repo: https://github.com/ondrish/cider-nord
+stylesheets:
+  - file: main.css
+    name: Nord
+    description: Polar Night surfaces, Snow Storm text, Frost accents, Aurora status colours
