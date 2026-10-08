@@ -1,10 +1,37 @@
 name: Nord
 author: ondrish
-description: An arctic, north-bluish theme for Cider using the Nord palette
-version: 1.0.0
+description: An arctic, north-bluish theme for Cider. Follows Cider's Light/Dark appearance, with Frost and Aurora accents and an optional varied Aurora layer.
+version: 1.1.0
 marketplaceID: 107
 repo: https://github.com/ondrish/cider-nord
 stylesheets:
   - file: main.css
-    name: Nord
-    description: Polar Night surfaces, Snow Storm text, Frost accents, Aurora status colours
+    name: Nord (base)
+    description: Required. Polar Night in Dark appearance, Snow Storm in Light appearance, Frost accent. Enable one accent and/or Aurora below.
+  - file: aurora.css
+    name: Aurora layer (varied colours)
+    description: Optional, stacks with any accent. Spreads Aurora colours across lyrics, ratings, selection and sidebar icons.
+  - file: accent-glacier.css
+    name: "Accent: Glacier"
+    description: Enable on top of the base, one accent at a time (nord9).
+  - file: accent-deep-frost.css
+    name: "Accent: Deep Frost"
+    description: Enable on top of the base, one accent at a time (nord10).
+  - file: accent-arctic-teal.css
+    name: "Accent: Arctic Teal"
+    description: Enable on top of the base, one accent at a time (nord7).
+  - file: accent-aurora-red.css
+    name: "Accent: Aurora Red"
+    description: Enable on top of the base, one accent at a time (nord11).
+  - file: accent-aurora-orange.css
+    name: "Accent: Aurora Orange"
+    description: Enable on top of the base, one accent at a time (nord12).
+  - file: accent-aurora-yellow.css
+    name: "Accent: Aurora Yellow"
+    description: Enable on top of the base, one accent at a time (nord13).
+  - file: accent-aurora-green.css
+    name: "Accent: Aurora Green"
+    description: Enable on top of the base, one accent at a time (nord14).
+  - file: accent-aurora-purple.css
+    name: "Accent: Aurora Purple"
+    description: Enable on top of the base, one accent at a time (nord15).
