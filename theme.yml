@@ -1,7 +1,7 @@
 name: Nord
 author: ondrish
 description: An arctic, north-bluish theme for Cider. Follows Cider's Light/Dark appearance, with Frost and Aurora accents and an optional varied Aurora layer.
-version: 1.1.0
+version: 1.1.1
 marketplaceID: 107
 repo: https://github.com/ondrish/cider-nord
 stylesheets:

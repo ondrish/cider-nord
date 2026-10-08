@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1 (2026-10-08)
+
+### Fixed
+- The album and playlist ⋯ (more actions) button: its icon was light on the accent fill and hard
+  to see. It now uses the same dark-on-accent colour as Play and Shuffle.
+
 ## 1.1.0 (2026-10-08)
 
 ### Added

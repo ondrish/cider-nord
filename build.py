@@ -15,7 +15,7 @@ import pathlib
 import re
 import sys
 
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 HERE = pathlib.Path(__file__).resolve().parent
 
 NORD = {
@@ -940,6 +940,7 @@ COMPONENTS = """
   /* ---- Text on accent fills: computed per accent for 4.5:1 */
   [sfc-name='AlbumPlaybackActions'] .c-btn,
   [sfc-name='AlbumPlaybackActions'] .c-btn .c-btn--content,
+  [sfc-name='AlbumActions'] .more-action-btn,
   .c-btn--primary-text,
   .plugin-base .c-btn.primary,
   button.bg-primary,
@@ -1159,15 +1160,15 @@ def check_roles(css, name, mode_toks):
                 check(f"{mode} role {role}/{bg}", t[role], t[bg], tgt)
 
 # ---------------------------------------------------------------- live selector check (F13)
-LIVE_IDS = HERE / "tools" / "cider-live-identifiers.txt.gz"
+LIVE_IDS = HERE / "local" / "tools" / "cider-live-identifiers.txt.gz"
 OWN = {"nord-pop", "nord-fade"}
 
 def check_live_selectors(files):
     import gzip
     if not LIVE_IDS.exists():
         # The snapshot is extracted from Cider's own (closed-source) bundle, so it is
-        # kept out of the public repo; maintainers keep it locally in tools/.
-        print("note: tools/cider-live-identifiers.txt.gz not present, live selector check skipped")
+        # kept out of the public repo; maintainers keep it locally in local/tools/.
+        print("note: local/tools/cider-live-identifiers.txt.gz not present, live selector check skipped")
         return
     ids = set(gzip.open(LIVE_IDS, "rt").read().split())
     dead = []
