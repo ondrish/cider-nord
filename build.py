@@ -1164,6 +1164,11 @@ OWN = {"nord-pop", "nord-fade"}
 
 def check_live_selectors(files):
     import gzip
+    if not LIVE_IDS.exists():
+        # The snapshot is extracted from Cider's own (closed-source) bundle, so it is
+        # kept out of the public repo; maintainers keep it locally in tools/.
+        print("note: tools/cider-live-identifiers.txt.gz not present, live selector check skipped")
+        return
     ids = set(gzip.open(LIVE_IDS, "rt").read().split())
     dead = []
     for name, css in files.items():
